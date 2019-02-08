@@ -1,0 +1,48 @@
+﻿@model SkolaMVC.Models.UcenikPredmetViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Ime @Model.Prezime</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @Html.Hidden("UcenikId")
+
+    </dl>
+
+    <div>
+
+
+        <ul class="nav nav-tabs" role="tablist">
+            <!--
+            <!-- Tab panes -
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">...</div>
+            <div role="tabpanel" class="tab-pane" id="profile">...</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>  -->
+
+            @{
+                foreach (SkolaMVC.Models.PredmetViewModel predmet in Model.Predmeti)
+                {
+                    <li role="presentation" class="tabClick" id="@predmet.Naziv" data-predmetId ="@predmet.PredmetId"><a href="#@predmet.Naziv" role="tab" data-toggle="tab">@predmet.Naziv</a></li>
+                }
+            }
+
+        </ul>
+
+        <div class="tab-content" id="tabContent"> </div>
+
+        </div>
+    </div>
+
+@section scripts
+{
+<script src="~/Scripts/App/ocjeneZaPredmet.js"></script>
+}

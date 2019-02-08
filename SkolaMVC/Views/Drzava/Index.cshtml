@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <button type="button" id="btnNovaDrzava" class="btn btn-secondary">Nova drzava</button>
+    <hr />
+</div>
+
+<div id="listaDrzava">
+</div>
+
+<div class="modal fade" id="modalPrikaz" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="btnX" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Kreiraj drzavu</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col">
+                    <div class="row">
+                        <p style="color:red;" id="txtMessage"></p>
+                    </div>
+                </div>
+
+                <label for="txtNaziv">Naziv: </label>
+                <input id="txtNaziv" type="text" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOtkazi" class="btn btn-default" data-dismiss="modal">Otkazi</button>
+                <button type="button" id="btnSacuvaj" class="btn btn-primary">Sacuvaj</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modalDeletePrikaz" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="btnXx" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Kreiraj drzavu</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnNe" class="btn btn-default" data-dismiss="modal">Ne</button>
+                <button type="button" id="btnDa" class="btn btn-primary">Da</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+@section Scripts {
+
+    @*sklonili da bi se prikazao modal*@
+
+    <script src="~/Scripts/App/drzave.js"></script>
+}

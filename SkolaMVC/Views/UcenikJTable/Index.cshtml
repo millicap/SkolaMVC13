@@ -1,0 +1,88 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="StudentTableContainer"></div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#StudentTableContainer').jtable({
+                title: 'Ucenici',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)  broj redova
+                sorting: true, //Enable sorting   po kolonama
+                defaultSorting: 'Ime', //Set default sorting
+                actions: {
+                    listAction: '/UcenikJTable/List',
+                    deleteAction: '/UcenikJTable/Delete',
+                    updateAction: '/UcenikJTable/Update',
+                    createAction: '/UcenikJTable/Create'
+                },
+                fields: {
+                    UcenikId: {
+                        key: true,
+                        create: false,   // true - bice...
+                        edit: false,
+                        list: false   //nece se prikazivati u list
+                    },
+                    Ime: {
+                        title: 'Ime',
+                        width: '23%'
+                    },
+                    Prezime: {
+                        title: 'Prezime',
+                        width: '23%'
+                    },
+                    Pol: {
+                        title: 'Pol',
+                        type: 'radiobutton',
+                        options: { 'Musko': 'Musko', 'Zensko': 'Zensko' }
+                    },
+                    JMBG: {
+                        title: 'JMBG',
+                        width: '23%'
+                    },
+                    Adresa: {
+                        title: 'Adresa',
+                        width: '23%'
+                    },
+                    DatumRodjenja: {
+                        title: 'DatumRodjenja',
+                        width: '15%',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd'
+                    },
+                    ImeRoditelja: {
+                        title: 'ImeRoditelja',
+                    },
+                    BrojUDnevniku: {
+                        title: 'BrojUDnevniku',
+                    },
+                    Drzavljanstvo: {
+                        title: 'Drzavljanstvo',
+                    },
+                    OdjeljenjeId: {
+                        title: 'OdjeljenjeId',
+                    },
+                    GradId: {
+                        title: 'GradId',
+                        width: '23%'
+                    }
+                }
+                });
+
+            //Load student list from server
+            $('#StudentTableContainer').jtable('load');    //pravi se ajax poziv i vraca nasu listu
+        });
+
+    </script>
+}

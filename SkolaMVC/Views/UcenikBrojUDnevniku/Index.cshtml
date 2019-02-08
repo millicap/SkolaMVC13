@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SkolaMVC.Models.UcenikBrojUDnevnikuViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+<form>
+    @Html.Hidden("UcenikId")
+    <div class="col-md-4">
+        @Html.Label("Ime")
+    </div>
+
+    <div class="col-md-4">
+        @Html.Label("Prezime")
+    </div>
+
+    <div class="col-md-4">
+        @Html.Label("BrojUDnevniku")
+
+    </div>
+
+
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+    <div>
+        <div class="col-md-4">
+            @Html.Label("Model[" + i + "].Ime", Model.ElementAt(i).Ime)
+            @Html.Hidden("Model[" + i + "].Ime", Model.ElementAt(i).Ime)
+        </div>
+
+        <div class="col-md-4">
+            @Html.Label("Model[" + i + "].Prezime", Model.ElementAt(i).Prezime)
+            @Html.Hidden("Model[" + i + "].Prezime", Model.ElementAt(i).Prezime)
+        </div>
+
+        <div class="col-md-4">
+            @Html.TextBox("Model[" + i + "].BrojUDnevniku", Model.ElementAt(i).BrojUDnevniku)
+
+        </div>
+
+        @Html.Hidden("Model[" + i + "].UcenikId", Model.ElementAt(i).UcenikId)
+    </div>
+    }
+
+    <input type="submit" value="Save"/>
+
+
+</form>
+}

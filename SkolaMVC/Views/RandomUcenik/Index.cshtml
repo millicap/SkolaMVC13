@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Random ucenik</h2>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-sm-12 col-md-8" id="ucenik">
+
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <!-- Small modal -->
+        <button type="button" id="btnPrikaziRandomModal" class="btn btn-primary">Modal</button>
+        <div class="modal fade bs-example-modal-sm" id="modelPrikaz" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content" id="randomModal">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")   sklonili da bi se prikazao modal*@
+
+    <script src="~/Scripts/App/vratiRandomUcenika.js"></script>
+}

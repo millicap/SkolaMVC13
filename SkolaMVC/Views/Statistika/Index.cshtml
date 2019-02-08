@@ -1,0 +1,205 @@
+﻿@model SkolaMVC.Models.StatistikaViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>StatistikaViewModel</h4>
+    <hr />
+    <div class="col-md-6">
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojUcenika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojUcenika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Top3Odlicnih)
+        </dt>
+
+        @{
+            for (int i = 0; i < Model.Top3Odlicnih.Count; i++)
+            {
+                <p>
+                    Ime i prezime: @Model.Top3Odlicnih.ElementAt(i)
+                </p>
+            }
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojOdlicnih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojOdlicnih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojVrloDobrih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojVrloDobrih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojDobrih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojDobrih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojDovoljnih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojDovoljnih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojNedovoljnih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojNedovoljnih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojOdlicnihPoOdjeljenjima)
+        </dt>
+
+        @{
+            for (int i = 0; i < Model.BrojOdlicnihPoOdjeljenjima.Count; i++)
+            {
+                <p>
+                    Odjeljenje ID: @Model.BrojOdlicnihPoOdjeljenjima.ElementAt(i).OdjeljenjeId Broj ucenika: @Model.BrojOdlicnihPoOdjeljenjima.ElementAt(i).BrojOdlicnih
+                </p>
+            }
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojMuskih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojMuskih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojZenskih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojZenskih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NajboljeOdjeljenjePoProsjeku)
+        </dt>
+
+        <dd>
+            <p> Naziv: @Model.NajboljeOdjeljenjePoProsjeku.Naziv, Prosjek: @Model.NajboljeOdjeljenjePoProsjeku.Prosjek </p>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProsjekGodinaUcenika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProsjekGodinaUcenika)
+        </dd>
+    </div>
+
+    <div class="col-md-6">
+        <dt>
+            @Html.DisplayNameFor(model => model.Top5Odlicnih)
+        </dt>
+
+        @{
+            for (int i = 0; i < Model.Top5Odlicnih.Count; i++)
+            {
+                <p>
+                    Ime i prezime: @Model.Top5Odlicnih.ElementAt(i).Ime  @Model.Top5Odlicnih.ElementAt(i).Prezime  Prosjek: @Model.Top5Odlicnih.ElementAt(i).Prosjek
+                </p>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Top3NajboljiNastavnici)
+        </dt>
+
+        @{
+            for (int i = 0; i < Model.Top3NajboljiNastavnici.Count; i++)
+            {
+                <p>
+                    Ime i prezime: @Model.Top3NajboljiNastavnici.ElementAt(i).Ime @Model.Top3NajboljiNastavnici.ElementAt(i).Prezime Prosjek: @Model.Top3NajboljiNastavnici.ElementAt(i).Prosjek
+                </p>
+            }
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Top4NajboljiPredmeti)
+        </dt>
+
+        @{
+            for (int i = 0; i < Model.Top4NajboljiPredmeti.Count; i++)
+            {
+                <p>
+                    Predmet: @Model.Top4NajboljiPredmeti.ElementAt(i).Naziv Prosjek: @Model.Top4NajboljiPredmeti.ElementAt(i).Prosjek
+                </p>
+            }
+        }
+
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="col-md-12">
+
+            <dt>
+                @Html.TextBoxFor(model => model.Pretraga, "", new { @id = "pretraga", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
+                @*<input type="submit" value="Search" id="btn-search" />*@
+                <button type="button" class="btn btn-info" id="btn-search">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Trazi
+                </button>
+            </dt>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.DropDownList("OdjeljenjeId", Model.Odjeljenja as List<SelectListItem>, new {@id= "odjeljenjeID", @class = "form-control col-md-6" })
+                </div>
+                    <div class="col-md-6">
+                        <label>@Html.RadioButton("Pol", "Musko") Musko</label>
+                        <label>@Html.RadioButton("Pol", "Zensko") Zensko</label>
+                    </div>
+                </div>
+            </div>
+        <div>
+
+        </div>
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @section scripts{
+        <script src="~/Scripts/App/pretragaucenika.js">
+           
+        </script>
+        }
+
+    <div id="result">
+
+
+    </div>
+
+    </div>

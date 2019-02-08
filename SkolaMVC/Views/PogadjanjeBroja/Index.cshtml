@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Igra- Pogodi broj</h2>
+
+<div>
+    <label> Polusaji: </label>
+    <label id="txtPokusaji">0</label>
+</div>
+
+<div>
+    <label>Poruka: </label>
+    <label id="txtPoruka"></label>
+</div>
+
+
+<div class="row">
+    @{
+        for (int i = 1; i <= 100; i++)
+        {
+            <div class="number col-md-1">
+                <label class="number col-md-1" style="text-align:center">@i</label>
+            </div>
+
+            @*if (i % 10 == 0)
+            {
+               <div class="col-md-2"></div>
+            }*@
+        }
+
+    }
+</div>
