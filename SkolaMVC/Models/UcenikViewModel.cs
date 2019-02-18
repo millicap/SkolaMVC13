@@ -23,7 +23,7 @@ namespace SkolaMVC.Models
         public DateTime DatumRodjenja { get; set; }
         [Display(Name = "Ime roditelja")]
         public string ImeRoditelja { get; set; }
-        [Display(Name = "Broj u dnevniku")]
+        [Display(Name = "Broj u dnevniku")] 
         public int BrojUDnevniku { get; set; }
         public string Drzavljanstvo { get; set; }
         public int OdjeljenjeId { get; set; }
