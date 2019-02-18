@@ -45,8 +45,6 @@ namespace SkolaMVC.Controllers
                     //Return result to jTable
                     return Json(new { Result = "OK", Records = records, TotalRecordCount = count });
                 }
-
-
             }
             catch (Exception ex)
             {
